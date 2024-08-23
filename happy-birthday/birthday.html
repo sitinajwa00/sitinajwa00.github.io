@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            background-color: #ffefef;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            color: #333;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff6347;
+            margin-bottom: 0;
+            animation: bounce 2s infinite;
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 0;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .cake {
+            margin: 30px auto;
+            width: 150px;
+            height: 150px;
+            background: url('HAPPY_BIRTHDAY.jpg') no-repeat center;
+            background-size: cover;
+        }
+        .button {
+            background-color: #ff6347;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ff4500;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 9999;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6347;
+            animation: fall 3s infinite ease-in-out;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti">
+        <!-- Confetti pieces will be generated dynamically -->
+    </div>
+    <h1>Happy Birthday!</h1>
+    <h2>Wishing You a Day Filled with Love and Joy</h2>
+    <div class="cake"></div>
+    <p>May your birthday be as sweet as you are! Sending lots of love and best wishes your way. Enjoy every moment of this special day and make memories that last a lifetime. 🎉🎂</p>
+    <button class="button">Click for a Surprise!</button>
+
+    <script>
+        // Create confetti effect
+        for (let i = 0; i < 100; i++) {
+            let confettiPiece = document.createElement('div');
+            confettiPiece.className = 'confetti-piece';
+            confettiPiece.style.left = Math.random() * 100 + 'vw';
+            confettiPiece.style.animationDelay = Math.random() * 5 + 's';
+            document.querySelector('.confetti').appendChild(confettiPiece);
+        }
+
+        // Surprise button interaction
+        document.querySelector('.button').addEventListener('click', function() {
+            alert('🎉 Happy Birthday! 🎉');
+        });
+    </script>
+</body>
+</html>
