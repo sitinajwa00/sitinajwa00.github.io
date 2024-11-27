@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            background-color: #ffefef;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            color: #333;
+            padding: 50px;
+            overflow-x: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff6347;
+            margin-bottom: 0;
+            animation: bounce 2s infinite;
+        }
+        h2 {
+            font-size: 2em;
+            margin-top: 0;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .cake {
+            margin: 30px auto;
+            width: 250px;
+            height: 200px;
+            background: url('HAPPY_BIRTHDAY.jpg') no-repeat center;
+            background-size: cover;
+        }
+        .button {
+            background-color: #ff6347;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ff4500;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 9999;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff6347;
+            animation: fall 3s infinite ease-in-out;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti">
+        <!-- Confetti pieces will be generated dynamically -->
+    </div>
+    <h1>Happy Birthday!</h1>
+    <h2>Wishing You a Day Filled with Love and Joy (ChatGPT)</h2>
+    <div class="cake"></div>
+    <p>Sorry no caption..malas nak fikir </p>
+    <button class="button">Click for a Surprise!</button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img style="width: 200px" src="hehe.jpg" alt="">
+            <p>Gurau je..❤️ Happiest 24th birthday to youu. Semoga jadi anak yang soleh and <strike>belanja saya makan hari2</strike> berjaya dunia akhirat✌️</p>
+        </div>
+    </div>
+
+    <!-- Add audio element -->
+    <audio id="birthdaySong" src="Happy Birthday.mp3"></audio>
+
+    <script>
+        // Create confetti effect
+        for (let i = 0; i < 100; i++) {
+            let confettiPiece = document.createElement('div');
+            confettiPiece.className = 'confetti-piece';
+            confettiPiece.style.left = Math.random() * 100 + 'vw';
+            confettiPiece.style.backgroundColor = getRandomColor();
+            confettiPiece.style.animationDelay = Math.random() * 5 + 's';
+            document.querySelector('.confetti').appendChild(confettiPiece);
+        }
+
+        // Function to generate random color for confetti
+        function getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.querySelector('.button');
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // Get the audio element
+        var audio = document.getElementById("birthdaySong");
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+            audio.play();
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+    </script>
+</body>
+</html>
